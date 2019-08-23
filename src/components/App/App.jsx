@@ -1,32 +1,26 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import './App.css';
-import { HashRouter as Router, Router, Link } from 'react-router-dom';
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
 
 //Components for page
-import Feeling from '../Feeling/Feeling'
-import Understanding from '../Understanding/Understanding'
-import Support from '../Support/Support'
-import Comments from '../Comments/Comments'
+import Feeling from '../Feeling/Feeling';
+import Understanding from '../Understanding/Understanding';
+import Support from '../Support/Support';
+import Comments from '../Comments/Comments';
+import Admin from '../Admin/Admin';
+import Header from '../Header/Header';
 
 class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div className='App'>
-					<header className='App-header'>
-						<h1 className='App-title'>Feedback!</h1>
-						<h4>
-							<i>Don't forget it!</i>
-						</h4>
-					</header>
-					<br />
-        </div>
-        <Route path='/feeling' component={Feeling} />
-        <Route path='/understanding' component={Understanding} />
-        <Route path='/support' component={Support} />
-        <Route path='/comments' component={Comments} />
-        <Route path='/admin' component={Admin} />
+				<Route path='/' component={Header} />
+				<Route path='/feeling' component={Feeling} />
+				<Route path='/understanding' component={Understanding} />
+				<Route path='/support' component={Support} />
+				<Route path='/comments' component={Comments} />
+				<Route path='/admin' component={Admin} />
 			</Router>
 		);
 	}
