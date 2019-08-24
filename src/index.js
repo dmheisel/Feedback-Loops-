@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
 //redux imports
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import 'typeface-roboto'
 import logger from 'redux-logger';
 
 const feedbackReducer = (state = {}, action) => {

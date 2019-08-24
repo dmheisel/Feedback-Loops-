@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import FeedbackInput from '../FeedbackInput/FeedbackInput';
 
+//material-ui imports
+import Typography from '@material-ui/core/Typography';
+
 class Support extends Component {
 	render() {
 		return (
-			<div>
-				<h2>How supported do you feel by staff?</h2>
+			<>
+				<Typography variant='h4' noWrap>
+					How well do you feel supported by staff?
+				</Typography>
 				<FeedbackInput nextLocation='/comments' action='ADD_SUPPORT' />
-			</div>
+			</>
 		);
 	}
 }
