@@ -9,7 +9,7 @@ class Feeling extends Component {
 	render() {
 		return (
 			<>
-				<Typography variant="h4" noWrap>
+				<Typography variant="h4">
 					How are you feeling?
 				</Typography>
         <FeedbackInput nextLocation="/understanding" action="ADD_FEELING"/>

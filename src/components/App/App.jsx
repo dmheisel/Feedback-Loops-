@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import './App.css';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 //Components for page
 import Feeling from '../Feeling/Feeling';
