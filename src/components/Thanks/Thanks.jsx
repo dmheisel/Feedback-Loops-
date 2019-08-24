@@ -6,7 +6,7 @@ class Thanks extends Component {
     return (
       <div>
         <h2>Thanks for your feedback!</h2>
-        <button onClick={() => this.props.history.push('/feeling')}>Leave New Feedback?</button>
+        <button onClick={() => this.props.history.push('/')}>Leave New Feedback?</button>
       </div>
     );
   }

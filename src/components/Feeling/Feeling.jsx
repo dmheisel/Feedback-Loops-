@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import FeedbackInput from '../FeedbackInput/FeedbackInput';
 
+//material-ui imports
+import Typography from '@material-ui/core/Typography'
+
 class Feeling extends Component {
-	state = {
-		feeling: ''
-	};
 
 	render() {
 		return (
-			<div>
-        <h2>How are you feeling today?</h2>
+			<>
+				<Typography variant="h4" noWrap>
+					How are you feeling?
+				</Typography>
         <FeedbackInput nextLocation="/understanding" action="ADD_FEELING"/>
-			</div>
+			</>
 		);
 	}
 }
