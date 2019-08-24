@@ -6,7 +6,7 @@ class Review extends Component {
 
   handleSubmit = () => {
     axios
-      .post('/feedback', this.props.feedback)
+      .post('/feedback/add', this.props.feedback)
       .then(response => {
         console.log(`successful POST route to server: ${response}`)
       })
