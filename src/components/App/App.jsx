@@ -11,6 +11,7 @@ import Comments from '../Comments/Comments';
 import Review from '../Review/Review'
 import Admin from '../Admin/Admin';
 import Header from '../Header/Header';
+import Thanks from '../Thanks/Thanks'
 
 class App extends Component {
 	render() {
@@ -22,7 +23,7 @@ class App extends Component {
 				<Route path='/support' component={Support} />
 				<Route path='/comments' component={Comments} />
 				<Route path='/review' component={Review} />
-
+				<Route path='/thanks' component={Thanks} />
 				<Route path='/admin' component={Admin} />
 			</Router>
 		);
