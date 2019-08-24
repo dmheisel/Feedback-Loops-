@@ -6,7 +6,7 @@ class Support extends Component {
 		return (
 			<div>
 				<h2>How supported do you feel by staff?</h2>
-				<FeedbackInput nextLocation='/comment' action='ADD_SUPPORT' />
+				<FeedbackInput nextLocation='/comments' action='ADD_SUPPORT' />
 			</div>
 		);
 	}
