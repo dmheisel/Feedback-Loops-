@@ -8,7 +8,7 @@ class Support extends Component {
 	render() {
 		return (
 			<>
-				<Typography variant='h4' noWrap>
+				<Typography variant='h4'>
 					How well do you feel supported by staff?
 				</Typography>
 				<FeedbackInput nextLocation='/comments' action='ADD_SUPPORT' />

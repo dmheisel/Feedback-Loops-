@@ -8,7 +8,7 @@ class Comments extends Component {
 	render() {
 		return (
 			<>
-				<Typography variant='h4' noWrap>
+				<Typography variant='h4'>
 					Any additional comments you'd like to add?
 				</Typography>
 				<FeedbackInput nextLocation='/review' action='ADD_COMMENTS' />

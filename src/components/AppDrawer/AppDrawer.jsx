@@ -48,7 +48,6 @@ class AppDrawer extends Component {
 	render() {
 		const { classes } = this.props;
 
-		const pageList = ['Feeling', 'Understanding', 'Support', 'Comments'];
 
 		return (
 			<div className={classes.root}>

@@ -8,7 +8,7 @@ class Understanding extends Component {
   render() {
     return (
 			<>
-				<Typography variant='h4' noWrap>
+				<Typography variant='h4'>
 					How well do you understand today's content?
 				</Typography>
 				<FeedbackInput nextLocation='/support' action='ADD_UNDERSTANDING' />

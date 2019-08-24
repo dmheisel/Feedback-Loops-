@@ -1,0 +1,56 @@
+import React, { Component } from 'react';
+
+//material-ui imports
+import { withStyles } from '@material-ui/core/styles';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
+const styles = theme => ({
+	root: {
+		display: 'flex'
+	},
+	formControl: {
+		margin: theme.spacing(3)
+	},
+	group: {
+		margin: theme.spacing(1, 0)
+	}
+});
+
+class RadioInput extends Component {
+	state = {
+		value: '0'
+	};
+
+	render() {
+		const { classes } = this.props;
+		return (
+			<div>
+				<FormControl component='fieldset' className={classes.formControl}>
+					<FormLabel component='legend'>Rating</FormLabel>
+					<RadioGroup
+						aria-label='Rating'
+						name='Rating'
+						className={classes.group}
+						value={this.state.value}
+						onChange={event => {
+							this.props.handleChange(event);
+							this.setState({ value: event.target.value });
+						}}>
+						<FormControlLabel value='1' control={<Radio />} label='1' />
+						<FormControlLabel value='2' control={<Radio />} label='2' />
+						<FormControlLabel value='3' control={<Radio />} label='3' />
+						<FormControlLabel value='4' control={<Radio />} label='4' />
+						<FormControlLabel value='5' control={<Radio />} label='5' />
+					</RadioGroup>
+				</FormControl>
+			</div>
+		);
+	}
+}
+
+export default withStyles(styles)(RadioInput);
