@@ -9,6 +9,7 @@ class Review extends Component {
       .post('/feedback/add', this.props.feedback)
       .then(response => {
         console.log(`successful POST route to server: ${response}`)
+        this.props.history.push('/thanks')
       })
       .catch(err => {
         console.log(`error on POST route to server: ${err}`)
@@ -19,7 +20,6 @@ class Review extends Component {
       <div>
         <h1> Review your feedback:</h1>
         <div>
-          <h4>{JSON.stringify(this.props.feedback)}</h4>
           <h3>Feelings: {this.props.feedback.feeling}</h3>
           <h3>Understanding: {this.props.feedback.understanding}</h3>
           <h3>Support: {this.props.feedback.support}</h3>
