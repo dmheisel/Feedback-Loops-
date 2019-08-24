@@ -3,26 +3,37 @@ import React, { Component } from 'react';
 import Slider from '@material-ui/core/Slider';
 import IconButton from '@material-ui/core/IconButton';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import TextField from '@material-ui/core/TextField';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class FeedbackInput extends Component {
 	state = {
-		value: 0
+		value: ''
 	};
 	render() {
 		return (
 			<div>
-				<Slider
-					defaultValue={3}
-					// aria-labelledby='discrete-slider'
-					valueLabelDisplay='on'
-					step={1}
-					marks
-					min={1}
-					max={5}
-					onChange={event => this.setState({ value: event.target.value })}
-				/>
+				{this.props.action === 'ADD_COMMENTS' ? (
+					<TextField
+						id='outlined-multiline-flexible'
+						label='Please add a comment'
+						multiline
+						rowsMax='4'
+						value={this.state.value}
+						onChange={event => this.setState({ value: event.target.value })}
+						// className={classes.textField}
+						margin='normal'
+						helperText='Add comment'
+						variant='outlined'
+					/>
+				) : (
+					<input
+						type='number'
+						value={this.state.value}
+						onChange={event => this.setState({ value: event.target.value })}
+					/>
+				)}
 				<IconButton
 					arialabel='Next page'
 					onClick={event => {

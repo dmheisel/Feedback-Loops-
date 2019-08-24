@@ -12,13 +12,13 @@ import logger from 'redux-logger';
 const feedbackReducer = (state = {}, action) => {
 	switch (action.type) {
 		case 'ADD_FEELING':
-			return { ...state, feeling: action.payload };
+			return {...state, feeling: action.payload}
 		case 'ADD_UNDERSTANDING':
 			return { ...state, understanding: action.payload };
 		case 'ADD_SUPPORT':
 			return { ...state, support: action.payload };
 		case 'ADD_COMMENTS':
-      return { ...state, comment: action.payload };
+      return { ...state, comments: action.payload };
     case 'CLEAR_FEEDBACK':
       return {}
 		default:
@@ -26,7 +26,7 @@ const feedbackReducer = (state = {}, action) => {
 	}
 };
 const store = createStore(
-	combineReducers(feedbackReducer),
+	combineReducers({feedbackReducer}),
 	applyMiddleware(logger)
 );
 ReactDOM.render(
