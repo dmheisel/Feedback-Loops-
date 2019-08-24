@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import FeedbackInput from '../FeedbackInput/FeedbackInput';
 
 class Feeling extends Component {
@@ -17,4 +16,4 @@ class Feeling extends Component {
 	}
 }
 
-export default connect()(Feeling);
+export default Feeling;
