@@ -15,7 +15,8 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				{/* app drawer is sidebar and top bar, route components are passed as its children */}
+				{/* app drawer is sidebar and top bar, route components are passed as its
+				children, taking advantage of styling created within AppDrawer component */}
 				<AppDrawer>
 					<Route path='/' exact component={Feeling} />
 					<Route path='/understanding' component={Understanding} />

@@ -9,7 +9,6 @@ class Thanks extends Component {
 				<button
 					onClick={() => {
 						this.props.history.push('/');
-						this.props.dispatch({ type: 'CLEAR_FEEDBACK' });
 					}}>
 					Leave New Feedback?
 				</button>
