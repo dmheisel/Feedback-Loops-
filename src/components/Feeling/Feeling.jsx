@@ -12,7 +12,7 @@ class Feeling extends Component {
 				<Typography variant="h4">
 					How are you feeling?
 				</Typography>
-        <FeedbackInput nextLocation="/understanding" action="ADD_FEELING"/>
+        <FeedbackInput current="feeling" nextLocation="/understanding" action="ADD_FEELING"/>
 			</>
 		);
 	}

@@ -11,7 +11,7 @@ class Support extends Component {
 				<Typography variant='h4'>
 					How well do you feel supported by staff?
 				</Typography>
-				<FeedbackInput nextLocation='/comments' action='ADD_SUPPORT' />
+				<FeedbackInput current="support" nextLocation='/comments' action='ADD_SUPPORT' />
 			</>
 		);
 	}

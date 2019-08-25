@@ -11,7 +11,7 @@ class Comments extends Component {
 				<Typography variant='h4'>
 					Any additional comments you'd like to add?
 				</Typography>
-				<FeedbackInput nextLocation='/review' action='ADD_COMMENTS' />
+				<FeedbackInput current='comments' nextLocation='/review' action='ADD_COMMENTS' />
 			</>
 		);
 	}

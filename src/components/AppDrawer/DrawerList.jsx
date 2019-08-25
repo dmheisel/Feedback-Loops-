@@ -15,17 +15,41 @@ import Edit from '@material-ui/icons/Edit';
 class DrawerList extends Component {
 	render() {
 		const pageList = [
-			{ text: 'Feeling', url: '/', icon: <Mood /> },
-      { text: 'Understanding', url: 'understanding', icon: <WhatsHot />},
-      { text: 'Support', url: '/support', icon: <People /> },
-			{ text: 'Comments', url: '/comments', icon: <Comment />},
-			{ text: 'Review', url: '/review', icon: <Edit /> }
-    ];
+			{
+				text: 'Feeling',
+				url: '/',
+				icon: <Mood />,
+				disabled: this.props.feedback.feeling ? false : true
+			},
+			{
+				text: 'Understanding',
+				url: 'understanding',
+				icon: <WhatsHot />,
+				disabled: this.props.feedback.understanding ? false : true
+			},
+			{
+				text: 'Support',
+				url: '/support',
+				icon: <People />,
+				disabled: this.props.feedback.support ? false : true
+			},
+			{
+				text: 'Comments',
+				url: '/comments',
+				icon: <Comment />,
+				disabled: this.props.feedback.comments===null ? true : false
+			},
+			{
+				text: 'Review',
+				url: '/review',
+				icon: <Edit />,
+			}
+		];
     // const pagesComplete =
 		const listHtml = pageList.map(page => {
       let url = page.url;
 			return (
-        <ListItem button onClick={() => this.props.history.push(url)}>
+				<ListItem key={page.text} disabled={page.disabled} button onClick={() => this.props.history.push(url)}>
 					<ListItemIcon>{page.icon}</ListItemIcon>
 					<ListItemText primary={page.text} />
 				</ListItem>

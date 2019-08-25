@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import 'typeface-roboto'
 import logger from 'redux-logger';
 
-const feedbackReducer = (state = {}, action) => {
+const feedbackReducer = (state = {feeling: null, understanding: null, support: null, comments: null}, action) => {
 	switch (action.type) {
 		case 'ADD_FEELING':
 			return {...state, feeling: action.payload}

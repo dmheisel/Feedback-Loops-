@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 class FeedbackInput extends Component {
 	state = {
-		value: ''
+		value: this.props.feedback[this.props.current] || ''
 	}
 
 	handleChange = (event) => {
@@ -49,5 +49,7 @@ class FeedbackInput extends Component {
 		);
 	}
 }
-
-export default withRouter(connect()(FeedbackInput));
+const mapStateToProps = reduxStore => ({
+	feedback: reduxStore.feedbackReducer
+})
+export default withRouter(connect(mapStateToProps)(FeedbackInput));
