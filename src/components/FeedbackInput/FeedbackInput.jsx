@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import TextInput from './TextInput';
 import RadioInput from './RadioInput';
 
-//material-ui imports
-import { connect } from 'react-redux';
-
 class FeedbackInput extends Component {
+	//handler component uses conditional rendering to provide either text input field
+	//or radio button field to its parent component.
+	//should be passed props current(current page), action(for dispatch), and nextLocation(url for next button)
 	render() {
 		return (
 			<div>
@@ -26,7 +26,4 @@ class FeedbackInput extends Component {
 		);
 	}
 }
-const mapStateToProps = reduxStore => ({
-	feedback: reduxStore.feedbackReducer
-});
-export default connect(mapStateToProps)(FeedbackInput);
+export default FeedbackInput;

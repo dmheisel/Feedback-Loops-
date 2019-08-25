@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+//material-ui imports
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider'
-
+//material-ui icon imports
 import Comment from '@material-ui/icons/Comment';
 import Mood from '@material-ui/icons/Mood';
 import People from '@material-ui/icons/People';
