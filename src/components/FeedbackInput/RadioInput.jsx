@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 
 //material-ui imports
 import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import IconButton from '@material-ui/core/IconButton';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
 	root: {},
@@ -22,56 +27,76 @@ const styles = theme => ({
 });
 
 class RadioInput extends Component {
+	handleChange = event => {
+		this.props.dispatch({
+			type: this.props.action,
+			payload: event.target.value
+		});
+	};
 
+	handleClick = event => {
+		if (this.props.feedback[this.props.current] === undefined) {
+			alert('You must select a value');
+		} else {
+			this.props.history.push(this.props.nextLocation);
+		}
+	};
 
 	render() {
 		const { classes } = this.props;
 		return (
-			<FormControl component='fieldset' className={classes.formControl}>
-				<FormLabel component='legend'>Rating</FormLabel>
-				<RadioGroup
-					aria-label='Rating'
-					name='Rating'
-					className={classes.group}
-					value={this.props.value}
-					onChange={event => {
-						this.props.handleChange(event);
-						this.setState({ value: event.target.value });
-					}}>
-					<FormControlLabel
-						value='1'
-						control={<Radio />}
-						label='1'
-						labelPlacement='bottom'
-					/>
-					<FormControlLabel
-						value='2'
-						control={<Radio />}
-						label='2'
-						labelPlacement='bottom'
-					/>
-					<FormControlLabel
-						value='3'
-						control={<Radio />}
-						label='3'
-						labelPlacement='bottom'
-					/>
-					<FormControlLabel
-						value='4'
-						control={<Radio />}
-						label='4'
-						labelPlacement='bottom'
-					/>
-					<FormControlLabel
-						value='5'
-						control={<Radio />}
-						label='5'
-						labelPlacement='bottom'
-					/>
-				</RadioGroup>
-			</FormControl>
+			<>
+				<FormControl component='fieldset' className={classes.formControl}>
+					<FormLabel component='legend'>Rating</FormLabel>
+					<RadioGroup
+						aria-label='Rating'
+						name='Rating'
+						className={classes.group}
+						value={this.props.feedback[this.props.current] || '0'}
+						onChange={this.handleChange}>
+						<FormControlLabel
+							value='1'
+							control={<Radio />}
+							label='1'
+							labelPlacement='bottom'
+						/>
+						<FormControlLabel
+							value='2'
+							control={<Radio />}
+							label='2'
+							labelPlacement='bottom'
+						/>
+						<FormControlLabel
+							value='3'
+							control={<Radio />}
+							label='3'
+							labelPlacement='bottom'
+						/>
+						<FormControlLabel
+							value='4'
+							control={<Radio />}
+							label='4'
+							labelPlacement='bottom'
+						/>
+						<FormControlLabel
+							value='5'
+							control={<Radio />}
+							label='5'
+							labelPlacement='bottom'
+						/>
+					</RadioGroup>
+				</FormControl>
+				<div display='block'>
+					<IconButton arialabel='Next page' onClick={this.handleClick}>
+						<Typography>Next Page</Typography>
+						<NavigateNextIcon />
+					</IconButton>
+				</div>
+			</>
 		);
 	}
 }
-
-export default withStyles(styles)(RadioInput);
+const mapStateToProps = reduxStore => ({
+	feedback: reduxStore.feedbackReducer
+});
+export default connect(mapStateToProps)(withRouter(withStyles(styles)(RadioInput)));
