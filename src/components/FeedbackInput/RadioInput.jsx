@@ -27,24 +27,49 @@ class RadioInput extends Component {
 	render() {
 		const { classes } = this.props;
 		return (
-				<FormControl component='fieldset' className={classes.formControl}>
-					<FormLabel component='legend'>Rating</FormLabel>
-					<RadioGroup
-						aria-label='Rating'
-						name='Rating'
-						className={classes.group}
-						value={this.props.value}
-						onChange={event => {
-							this.props.handleChange(event);
-							this.setState({ value: event.target.value });
-						}}>
-						<FormControlLabel value='1' control={<Radio />} label='1' />
-						<FormControlLabel value='2' control={<Radio />} label='2' />
-						<FormControlLabel value='3' control={<Radio />} label='3' />
-						<FormControlLabel value='4' control={<Radio />} label='4' />
-						<FormControlLabel value='5' control={<Radio />} label='5' />
-					</RadioGroup>
-				</FormControl>
+			<FormControl component='fieldset' className={classes.formControl}>
+				<FormLabel component='legend'>Rating</FormLabel>
+				<RadioGroup
+					aria-label='Rating'
+					name='Rating'
+					className={classes.group}
+					value={this.props.value}
+					onChange={event => {
+						this.props.handleChange(event);
+						this.setState({ value: event.target.value });
+					}}>
+					<FormControlLabel
+						value='1'
+						control={<Radio />}
+						label='1'
+						labelPlacement='bottom'
+					/>
+					<FormControlLabel
+						value='2'
+						control={<Radio />}
+						label='2'
+						labelPlacement='bottom'
+					/>
+					<FormControlLabel
+						value='3'
+						control={<Radio />}
+						label='3'
+						labelPlacement='bottom'
+					/>
+					<FormControlLabel
+						value='4'
+						control={<Radio />}
+						label='4'
+						labelPlacement='bottom'
+					/>
+					<FormControlLabel
+						value='5'
+						control={<Radio />}
+						label='5'
+						labelPlacement='bottom'
+					/>
+				</RadioGroup>
+			</FormControl>
 		);
 	}
 }

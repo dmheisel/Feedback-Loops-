@@ -19,27 +19,28 @@ class DrawerList extends Component {
 				text: 'Feeling',
 				url: '/',
 				icon: <Mood />,
-				disabled: this.props.feedback.feeling ? false : true
+				disabled: this.props.feedback.feeling === null ? true : false
 			},
 			{
 				text: 'Understanding',
 				url: 'understanding',
 				icon: <WhatsHot />,
-				disabled: this.props.feedback.understanding ? false : true
+				disabled: this.props.feedback.understanding === null ? true : false
 			},
 			{
 				text: 'Support',
 				url: '/support',
 				icon: <People />,
-				disabled: this.props.feedback.support ? false : true
+				disabled: this.props.feedback.support === null ? true : false
 			},
 			{
 				text: 'Comments',
 				url: '/comments',
 				icon: <Comment />,
-				disabled: this.props.feedback.comments===null ? true : false
+				disabled: this.props.feedback.comments === null ? true : false
 			},
-			{
+			//if any value in this.props.feedback is 'null', does not display Review page option
+			!Object.values(this.props.feedback).includes(null) && {
 				text: 'Review',
 				url: '/review',
 				icon: <Edit />,

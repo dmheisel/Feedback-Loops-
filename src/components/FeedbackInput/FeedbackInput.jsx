@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-import TextInput from './TextInput'
-import RadioInput from './RadioInput'
+import TextInput from './TextInput';
+import RadioInput from './RadioInput';
 
 //material-ui imports
 import IconButton from '@material-ui/core/IconButton';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Typography from '@material-ui/core/Typography'
 
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class FeedbackInput extends Component {
 	state = {
-		value: this.props.feedback[this.props.current] || ''
-	}
+		value: this.props.feedback[this.props.current] || null
+		//value defaults to null if not already filled in on redux sture.
+		//this allows field to remain filled on page if user returns to it.
+	};
 
-	handleChange = (event) => {
-		this.setState({value: event.target.value})
-	}
+	handleChange = event => {
+		this.setState({ value: event.target.value });
+	};
 
 	render() {
 		return (
@@ -42,6 +45,7 @@ class FeedbackInput extends Component {
 							});
 							this.props.history.push(this.props.nextLocation);
 						}}>
+						<Typography>Next Page</Typography>
 						<NavigateNextIcon />
 					</IconButton>
 				</div>
@@ -51,5 +55,5 @@ class FeedbackInput extends Component {
 }
 const mapStateToProps = reduxStore => ({
 	feedback: reduxStore.feedbackReducer
-})
+});
 export default withRouter(connect(mapStateToProps)(FeedbackInput));
