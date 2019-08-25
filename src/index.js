@@ -7,27 +7,35 @@ import registerServiceWorker from './registerServiceWorker';
 //redux imports
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import 'typeface-roboto'
+import 'typeface-roboto';
 import logger from 'redux-logger';
 
-const feedbackReducer = (state = {feeling: null, understanding: null, support: null, comments: null}, action) => {
+const feedbackReducer = (
+	state = { feeling: null, understanding: null, support: null, comments: null },
+	action
+) => {
 	switch (action.type) {
 		case 'ADD_FEELING':
-			return {...state, feeling: action.payload}
+			return { ...state, feeling: action.payload };
 		case 'ADD_UNDERSTANDING':
 			return { ...state, understanding: action.payload };
 		case 'ADD_SUPPORT':
 			return { ...state, support: action.payload };
 		case 'ADD_COMMENTS':
-      return { ...state, comments: action.payload };
-    case 'CLEAR_FEEDBACK':
-      return {}
+			return { ...state, comments: action.payload };
+		case 'CLEAR_FEEDBACK':
+			return {
+				feeling: null,
+				understanding: null,
+				support: null,
+				comments: null
+			};
 		default:
 			return state;
 	}
 };
 const store = createStore(
-	combineReducers({feedbackReducer}),
+	combineReducers({ feedbackReducer }),
 	applyMiddleware(logger)
 );
 ReactDOM.render(
