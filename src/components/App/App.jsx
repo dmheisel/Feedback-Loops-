@@ -17,7 +17,7 @@ class App extends Component {
 		return (
 			<Router>
 				<AppDrawer>
-					<Route path='/feeling' exact component={Feeling} />
+					<Route path='/' exact component={Feeling} />
 					<Route path='/understanding' component={Understanding} />
 					<Route path='/support' component={Support} />
 					<Route path='/comments' component={Comments} />

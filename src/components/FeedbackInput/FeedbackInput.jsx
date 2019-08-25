@@ -22,18 +22,29 @@ class FeedbackInput extends Component {
 		return (
 			<div>
 				{this.props.action === 'ADD_COMMENTS' ? (
-					<TextInput handleChange={this.handleChange} />
+					<TextInput
+						handleChange={this.handleChange}
+						value={this.state.value}
+					/>
 				) : (
-					<RadioInput handleChange={this.handleChange} />
+					<RadioInput
+						handleChange={this.handleChange}
+						value={this.state.value}
+					/>
 				)}
-				<IconButton
-					arialabel='Next page'
-					onClick={event => {
-						this.props.dispatch({type: this.props.action, payload: this.state.value})
-						this.props.history.push(this.props.nextLocation);
-					}}>
-					<NavigateNextIcon />
-				</IconButton>
+				<div display='block'>
+					<IconButton
+						arialabel='Next page'
+						onClick={event => {
+							this.props.dispatch({
+								type: this.props.action,
+								payload: this.state.value
+							});
+							this.props.history.push(this.props.nextLocation);
+						}}>
+						<NavigateNextIcon />
+					</IconButton>
+				</div>
 			</div>
 		);
 	}
