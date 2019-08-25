@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 //Components for page
@@ -16,6 +15,7 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
+				{/* app drawer is sidebar and top bar, route components are passed as its children */}
 				<AppDrawer>
 					<Route path='/' exact component={Feeling} />
 					<Route path='/understanding' component={Understanding} />

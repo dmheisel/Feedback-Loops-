@@ -10,8 +10,10 @@ import { Provider } from 'react-redux';
 import 'typeface-roboto';
 import logger from 'redux-logger';
 
+//feedback reducer handles each element of feedback provided
+//adds it to an object with keys for each feedback
 const feedbackReducer = (
-	state = { feeling: null, understanding: null, support: null, comments: null },
+	state = { feeling: null, understanding: null, support: null, comments: undefined },
 	action
 ) => {
 	switch (action.type) {
@@ -28,7 +30,7 @@ const feedbackReducer = (
 				feeling: null,
 				understanding: null,
 				support: null,
-				comments: null
+				comments: undefined
 			};
 		default:
 			return state;

@@ -37,20 +37,30 @@ class DrawerList extends Component {
 				text: 'Comments',
 				url: '/comments',
 				icon: <Comment />,
-				disabled: this.props.feedback.comments === null ? true : false
-			},
-			//if any value in this.props.feedback is 'null', does not display Review page option
-			!Object.values(this.props.feedback).includes(null) && {
-				text: 'Review',
-				url: '/review',
-				icon: <Edit />,
+				disabled: this.props.feedback.comments === undefined ? true : false
 			}
 		];
-    // const pagesComplete =
-		const listHtml = pageList.map(page => {
-      let url = page.url;
+		if (!Object.values(this.props.feedback).includes(null)) {
+			pageList.push({
+				text: 'Review',
+				url: '/review',
+				icon: <Edit />
+			});
+		}
+		//if any value in this.props.feedback is 'null', does not display Review page option
+		// !Object.values(this.props.feedback).includes(null) && {
+		// 	text: 'Review',
+		// 	url: '/review',
+		// 	icon: (<Edit />),
+		// }
+		// const pagesComplete =
+		const listHtml = pageList.map((page, index) => {
 			return (
-				<ListItem key={page.text} disabled={page.disabled} button onClick={() => this.props.history.push(url)}>
+				<ListItem
+					key={index}
+					disabled={page.disabled}
+					button
+					onClick={() => this.props.history.push(page.url)}>
 					<ListItemIcon>{page.icon}</ListItemIcon>
 					<ListItemText primary={page.text} />
 				</ListItem>

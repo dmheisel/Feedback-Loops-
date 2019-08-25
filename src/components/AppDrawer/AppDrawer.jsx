@@ -42,11 +42,12 @@ class AppDrawer extends Component {
 
 		return (
 			<div className={classes.root}>
+				{/* Removes any margins, padding, etc */}
 				<CssBaseline />
 				<AppBar position='fixed' className={classes.appBar}>
 					<ToolBar>
 						<Typography variant='h6' noWrap>
-							FeedBack Loops
+							FeedBack Loop
 						</Typography>
 					</ToolBar>
 				</AppBar>
@@ -65,6 +66,7 @@ class AppDrawer extends Component {
 					<div className={classes.toolbar} />
 					{this.props.children}
 					{/* children to this app will be placed here(wrap them in <AppDrawer></AppDrawer>) */}
+
 				</main>
 			</div>
 		);
