@@ -10,33 +10,30 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 const styles = theme => ({
-	root: {
-		display: 'flex'
-	},
+	root: {},
 	formControl: {
-		margin: theme.spacing(3)
+		margin: theme.spacing(2)
 	},
 	group: {
+		display: 'flex',
+		flexDirection: 'row',
 		margin: theme.spacing(1, 0)
 	}
 });
 
 class RadioInput extends Component {
-	state = {
-		value: '0'
-	};
+
 
 	render() {
 		const { classes } = this.props;
 		return (
-			<div>
 				<FormControl component='fieldset' className={classes.formControl}>
 					<FormLabel component='legend'>Rating</FormLabel>
 					<RadioGroup
 						aria-label='Rating'
 						name='Rating'
 						className={classes.group}
-						value={this.state.value}
+						value={this.props.value}
 						onChange={event => {
 							this.props.handleChange(event);
 							this.setState({ value: event.target.value });
@@ -48,7 +45,6 @@ class RadioInput extends Component {
 						<FormControlLabel value='5' control={<Radio />} label='5' />
 					</RadioGroup>
 				</FormControl>
-			</div>
 		);
 	}
 }

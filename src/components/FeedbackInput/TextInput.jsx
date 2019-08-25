@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 
 import TextField from '@material-ui/core/TextField'
+import {withStyles} from '@material-ui/core/styles'
 
-class TextInput extends Component {
-	state = {
-		value: ''
+const styles = theme => ({
+	root: {
+		width: '50vw'
 	}
-  render() {
+})
+class TextInput extends Component {
+
+	render() {
+		const {classes} = this.props
+
     return (
 			<TextField
-				id='outlined-multiline-flexible'
+				id='CommentInput'
+				className={classes.root}
 				label='Please add a comment'
 				multiline
 				rowsMax='4'
-				value={this.state.value}
+				value={this.props.value}
 				onChange={event => { this.props.handleChange(event); this.setState({value: event.target.value}) }}
 				// className={classes.textField}
 				margin='normal'
@@ -24,4 +31,4 @@ class TextInput extends Component {
   }
 }
 
-export default TextInput;
+export default withStyles(styles)(TextInput);
