@@ -13,7 +13,7 @@ import logger from 'redux-logger';
 //feedback reducer handles each element of feedback provided
 //adds it to an object with keys for each feedback
 const feedbackReducer = (
-	state = { feeling: null, understanding: null, support: null, comments: undefined },
+	state = { feeling: undefined , understanding: undefined, support: undefined, comments: undefined },
 	action
 ) => {
 	switch (action.type) {
@@ -27,9 +27,9 @@ const feedbackReducer = (
 			return { ...state, comments: action.payload };
 		case 'CLEAR_FEEDBACK':
 			return {
-				feeling: null,
-				understanding: null,
-				support: null,
+				feeling: undefined,
+				understanding: undefined,
+				support: undefined,
 				comments: undefined
 			};
 		default:

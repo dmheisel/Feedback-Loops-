@@ -24,7 +24,7 @@ class TextInput extends Component {
 	};
 
 	handleClick = () => {
-		this.props.dispatch({ type: 'ADD_COMMENTS', payload: this.state.comments });
+		this.props.dispatch({ type: 'ADD_COMMENTS', payload: this.state.comments || '' });
 		this.props.history.push(this.props.nextLocation);
 	};
 
