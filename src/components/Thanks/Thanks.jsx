@@ -13,7 +13,7 @@ class Thanks extends Component {
 					Leave New Feedback?
 				</button>
 			</div>
-		);
+		)
 	}
 }
 
