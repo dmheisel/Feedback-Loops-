@@ -13,8 +13,7 @@ import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
 	root: {
-		width: '80%',
-		margin: 'auto'
+		width: '80%'
 	},
 	paper: {
 		marginTop: theme.spacing(3),
@@ -23,7 +22,8 @@ const styles = theme => ({
 		marginBottom: theme.spacing(2)
 	},
 	table: {
-		minWidth: 650
+		minWidth: 650,
+		backgroundColor: theme.palette.secondary
 	}
 });
 

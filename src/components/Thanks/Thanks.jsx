@@ -12,7 +12,6 @@ const styles = theme => ({
 	root: {
 		padding: theme.spacing(3, 3),
 		width: '80%',
-		margin: 'auto'
 	},
 	textArea: {
 		margin: 'auto'

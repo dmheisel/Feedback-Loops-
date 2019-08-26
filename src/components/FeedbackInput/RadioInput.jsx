@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-
 //material-ui imports
 import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
@@ -87,7 +86,11 @@ class RadioInput extends Component {
 					</RadioGroup>
 				</FormControl>
 				<div display='block'>
-					<Button arialabel='Next page' onClick={this.handleClick}>
+					<Button
+						arialabel='Next page'
+						variant='contained'
+						color='primary'
+						onClick={this.handleClick}>
 						<Typography>Next Page</Typography>
 						<NavigateNextIcon />
 					</Button>
@@ -99,4 +102,6 @@ class RadioInput extends Component {
 const mapStateToProps = reduxStore => ({
 	feedback: reduxStore.feedbackReducer
 });
-export default connect(mapStateToProps)(withRouter(withStyles(styles)(RadioInput)));
+export default connect(mapStateToProps)(
+	withRouter(withStyles(styles)(RadioInput))
+);

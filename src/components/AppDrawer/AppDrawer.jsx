@@ -10,8 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import DrawerList from './DrawerList';
 
-
-
 const styles = theme => ({
 	root: {
 		display: 'flex'
@@ -22,10 +20,10 @@ const styles = theme => ({
 	},
 	drawer: {
 		width: 240,
-		flexShrink: 0
+		flexShrink: 0,
 	},
 	drawerPaper: {
-		width: 240
+		width: 240,
 	},
 	toolbar: theme.mixins.toolbar,
 	content: {
@@ -38,7 +36,6 @@ const styles = theme => ({
 class AppDrawer extends Component {
 	render() {
 		const { classes } = this.props;
-
 
 		return (
 			<div className={classes.root}>

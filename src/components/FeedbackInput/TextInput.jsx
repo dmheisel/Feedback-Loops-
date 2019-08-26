@@ -10,7 +10,6 @@ import { withStyles } from '@material-ui/core/styles';
 //material-ui icon imports
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
-
 const styles = theme => ({
 	textField: {
 		width: '50vw'
@@ -26,7 +25,10 @@ class TextInput extends Component {
 	};
 
 	handleClick = () => {
-		this.props.dispatch({ type: 'ADD_COMMENTS', payload: this.state.comments || '' });
+		this.props.dispatch({
+			type: 'ADD_COMMENTS',
+			payload: this.state.comments || ''
+		});
 		this.props.history.push(this.props.nextLocation);
 	};
 
@@ -48,7 +50,11 @@ class TextInput extends Component {
 					variant='outlined'
 				/>
 				<div display='block'>
-					<Button arialabel='Next page' onClick={this.handleClick}>
+					<Button
+						arialabel='Next page'
+						variant='contained'
+						color='primary'
+						onClick={this.handleClick}>
 						<Typography>Next Page</Typography>
 						<NavigateNextIcon />
 					</Button>
@@ -61,4 +67,6 @@ class TextInput extends Component {
 const mapStateToProps = reduxStore => ({
 	feedback: reduxStore.feedbackReducer
 });
-export default connect(mapStateToProps)(withRouter(withStyles(styles)(TextInput)));
+export default connect(mapStateToProps)(
+	withRouter(withStyles(styles)(TextInput))
+);

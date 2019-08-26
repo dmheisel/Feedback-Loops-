@@ -10,10 +10,28 @@ import { Provider } from 'react-redux';
 import 'typeface-roboto';
 import logger from 'redux-logger';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+	palette: {
+		primary: {
+			light: '#5adccf',
+			main: '#07aa9e',
+			dark: '#007a70'
+		}
+	}
+});
+
 //feedback reducer handles each element of feedback provided
 //adds it to an object with keys for each feedback
 const feedbackReducer = (
-	state = { feeling: undefined , understanding: undefined, support: undefined, comments: undefined },
+	state = {
+		feeling: undefined,
+		understanding: undefined,
+		support: undefined,
+		comments: undefined
+	},
 	action
 ) => {
 	switch (action.type) {
@@ -41,9 +59,11 @@ const store = createStore(
 	applyMiddleware(logger)
 );
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
+	<ThemeProvider theme={theme}>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</ThemeProvider>,
 	document.getElementById('root')
 );
 registerServiceWorker();
