@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 //material-ui imports
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
@@ -48,10 +48,10 @@ class TextInput extends Component {
 					variant='outlined'
 				/>
 				<div display='block'>
-					<IconButton arialabel='Next page' onClick={this.handleClick}>
+					<Button arialabel='Next page' onClick={this.handleClick}>
 						<Typography>Next Page</Typography>
 						<NavigateNextIcon />
-					</IconButton>
+					</Button>
 				</div>
 			</>
 		);
