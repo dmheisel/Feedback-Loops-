@@ -38,9 +38,10 @@ class AdminTableItem extends Component {
 					<IconButton
 						className={classes.button}
 						onClick={() => {
+							//sweet alert dialogue to confirm deletion
 							Swal.fire({
 								title: 'Are you sure?',
-								text: "You won't be able to revert this!",
+								text: "This action is permanent.",
 								type: 'warning',
 								showCancelButton: true,
 								confirmButtonColor: '#3085d6',
@@ -52,6 +53,7 @@ class AdminTableItem extends Component {
 										'Deleted!',
 										'Feedback deleted.',
 										'success',
+										//triggers delete function on clicking confirm
 										this.props.deleteFeedback(feedback.id)
 									);
 								}

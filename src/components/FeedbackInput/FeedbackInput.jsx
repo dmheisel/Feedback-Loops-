@@ -5,7 +5,7 @@ import RadioInput from './RadioInput';
 class FeedbackInput extends Component {
 	//handler component uses conditional rendering to provide either text input field
 	//or radio button field to its parent component.
-	//should be passed props current(current page), action(for dispatch), and nextLocation(url for next button)
+	//this component should be passed props current(current page), action(for dispatch), and nextLocation(url for next button)
 	render() {
 		return (
 			<div>

@@ -38,6 +38,7 @@ class Admin extends Component {
 			.then(response => {
 				console.log('successful GET route from server');
 				this.setState({ feedbackList: response.data });
+				//sets feedback to local state
 			})
 			.catch(err => {
 				console.log(`error on GET route from server: ${err}`);
@@ -56,6 +57,7 @@ class Admin extends Component {
 
 	toggleFeedbackFlag = id => {
 		axios
+			//does not need to send data -- sql query for /feedback/flag/id toggles flagged status
 			.put(`/feedback/flag/${id}`)
 			.then(response => {
 				console.log(`successful PUT route from server: ${response.data}`);
@@ -71,11 +73,13 @@ class Admin extends Component {
 	render() {
 		const { classes } = this.props;
 		const tableHtml = this.state.feedbackList.map(feedback => (
+			//passes each feedback object to AdminTableItem component
+			//gets from state -- runs getFeedback on mount and sets it to local state
 			<AdminTableItem
 				key={feedback.id}
 				feedback={feedback}
-        toggleFeedbackFlag={this.toggleFeedbackFlag}
-        deleteFeedback={this.deleteFeedback}
+				toggleFeedbackFlag={this.toggleFeedbackFlag}
+				deleteFeedback={this.deleteFeedback}
 			/>
 		));
 

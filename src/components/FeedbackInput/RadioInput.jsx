@@ -27,6 +27,8 @@ const styles = theme => ({
 
 class RadioInput extends Component {
 	handleChange = event => {
+		//sets value on change to keep the value on the page if user moves away to edit a different page
+		//before submitting to the next one
 		this.props.dispatch({
 			type: this.props.action,
 			payload: event.target.value
@@ -34,6 +36,7 @@ class RadioInput extends Component {
 	};
 
 	handleClick = event => {
+		//uses sweetalert to notify that user must input a value
 		if (this.props.feedback[this.props.current] === undefined) {
 			swal.fire({
 				type: 'error',

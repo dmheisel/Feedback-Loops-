@@ -21,12 +21,16 @@ class TextInput extends Component {
 
 	handleChange = event => {
 		this.setState({ comments: event.target.value });
+		//uses local state since we don't need to catch every keystroke
 	};
 
 	handleClick = () => {
 		this.props.dispatch({
 			type: 'ADD_COMMENTS',
 			payload: this.state.comments || ''
+			//if state remains undefined, sends blank string
+			//this allows user to leave field blank -- app drawer conditionally enables
+			//each page if the reducer store value for that page is not undefined
 		});
 		this.props.history.push(this.props.nextLocation);
 	};

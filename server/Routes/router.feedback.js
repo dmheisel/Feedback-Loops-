@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 //GET route
 router.get('/', (req, res) => {
 	let sqlText = `SElECT * FROM "feedback"
-    ORDER BY "id" DESC`;
+    							ORDER BY "id" DESC`;
 
 	pool
 		.query(sqlText)
@@ -23,10 +23,10 @@ router.get('/', (req, res) => {
 router.post('/add', (req, res) => {
 	let feedback = req.body;
 	let sqlText = `INSERT
-      INTO "feedback"
-        ("feeling", "understanding", "support", "comments")
-      VALUES
-        ($1, $2, $3, $4);`;
+      						INTO "feedback"
+        						("feeling", "understanding", "support", "comments")
+     						 	VALUES
+        						($1, $2, $3, $4);`;
 	let values = [
 		feedback.feeling,
 		feedback.understanding,
@@ -48,11 +48,12 @@ router.post('/add', (req, res) => {
 
 //PUT route
 router.put('/flag/:id', (req, res) => {
+	//put route only to toggle flag status  Does not need incoming data
 	let idToEdit = req.params.id;
 	let sqlText = `UPDATE "feedback"
-      SET
-				"flagged" = NOT "flagged"
-      WHERE "id" = $1;`;
+      						SET
+										"flagged" = NOT "flagged"
+     						 	WHERE "id" = $1;`;
 	let values = [idToEdit]; // values for SQL input sanitization
 
 	pool
@@ -70,20 +71,18 @@ router.put('/flag/:id', (req, res) => {
 //DELETE route
 router.delete('/:id', (req, res) => {
 	let idToDelete = req.params.id;
-	let sqlText =
-		`DELETE FROM "feedback"
-			WHERE "id" = $1`
+	let sqlText = `DELETE FROM "feedback"
+										WHERE "id" = $1`;
 
 	pool
 		.query(sqlText, [idToDelete])
 		.then(() => {
 			console.log(`successful DELETE from database`);
-			res.sendStatus(204)
+			res.sendStatus(204);
 		})
 		.catch(err => {
-			console.log(`error on DELETE route from database: ${err}`)
-		})
-})
-
+			console.log(`error on DELETE route from database: ${err}`);
+		});
+});
 
 module.exports = router;

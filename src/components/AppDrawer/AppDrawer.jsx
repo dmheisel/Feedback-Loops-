@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DrawerList from './DrawerList';
 //material-ui imports
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -7,7 +8,6 @@ import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import DrawerList from './DrawerList';
 
 const styles = theme => ({
 	root: {
@@ -19,10 +19,10 @@ const styles = theme => ({
 	},
 	drawer: {
 		width: 240,
-		flexShrink: 0,
+		flexShrink: 0
 	},
 	drawerPaper: {
-		width: 240,
+		width: 240
 	},
 	toolbar: theme.mixins.toolbar,
 	content: {
@@ -38,8 +38,8 @@ class AppDrawer extends Component {
 
 		return (
 			<div className={classes.root}>
-				{/* Removes any margins, padding, etc */}
 				<CssBaseline />
+				{/* Removes any margins, padding, etc */}
 				<AppBar position='fixed' className={classes.appBar}>
 					<ToolBar>
 						<Typography variant='h6' noWrap>
@@ -62,7 +62,6 @@ class AppDrawer extends Component {
 					<div className={classes.toolbar} />
 					{this.props.children}
 					{/* children to this app will be placed here(wrap them in <AppDrawer></AppDrawer>) */}
-
 				</main>
 			</div>
 		);
