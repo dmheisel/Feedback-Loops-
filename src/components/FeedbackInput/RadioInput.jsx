@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import swal from 'sweetalert2'
 //material-ui imports
 import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
@@ -34,7 +35,11 @@ class RadioInput extends Component {
 
 	handleClick = event => {
 		if (this.props.feedback[this.props.current] === undefined) {
-			alert('You must select a value');
+			swal.fire({
+				type: 'error',
+				title: 'Error',
+				text: 'You must choose a value to continue.'
+			});
 		} else {
 			this.props.history.push(this.props.nextLocation);
 		}

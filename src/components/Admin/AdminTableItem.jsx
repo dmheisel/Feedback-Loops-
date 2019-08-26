@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Swal from 'sweetalert2'
 //material-ui imports
 import { withStyles } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
@@ -36,7 +37,26 @@ class AdminTableItem extends Component {
 				<TableCell align='right'>
 					<IconButton
 						className={classes.button}
-						onClick={() => this.props.deleteFeedback(feedback.id)}>
+						onClick={() => {
+							Swal.fire({
+								title: 'Are you sure?',
+								text: "You won't be able to revert this!",
+								type: 'warning',
+								showCancelButton: true,
+								confirmButtonColor: '#3085d6',
+								cancelButtonColor: '#d33',
+								confirmButtonText: 'Confirm'
+							}).then(result => {
+								if (result.value) {
+									Swal.fire(
+										'Deleted!',
+										'Feedback deleted.',
+										'success',
+										this.props.deleteFeedback(feedback.id)
+									);
+								}
+							});
+						}}>
 						<DeleteSweep />
 					</IconButton>
 				</TableCell>
