@@ -37,7 +37,7 @@ class AdminTableItem extends Component {
 				<TableCell align='right'>
 					<IconButton
 						className={classes.button}
-						onClick={this.props.deleteFeedback(feedback.id)}>
+						onClick={() => this.props.deleteFeedback(feedback.id)}>
 						<DeleteSweep />
 					</IconButton>
 				</TableCell>

@@ -48,7 +48,6 @@ router.post('/add', (req, res) => {
 
 //PUT route
 router.put('/flag/:id', (req, res) => {
-	let flagStatus = req.body;
 	let idToEdit = req.params.id;
 	let sqlText = `UPDATE "feedback"
       SET
@@ -67,5 +66,24 @@ router.put('/flag/:id', (req, res) => {
 			res.sendStatus(500);
 		});
 });
+
+//DELETE route
+router.delete('/:id', (req, res) => {
+	let idToDelete = req.params.id;
+	let sqlText =
+		`DELETE FROM "feedback"
+			WHERE "id" = $1`
+
+	pool
+		.query(sqlText, [idToDelete])
+		.then(() => {
+			console.log(`successful DELETE from database`);
+			res.sendStatus(204)
+		})
+		.catch(err => {
+			console.log(`error on DELETE route from database: ${err}`)
+		})
+})
+
 
 module.exports = router;
