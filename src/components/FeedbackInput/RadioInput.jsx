@@ -10,7 +10,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Typography from '@material-ui/core/Typography';
 
@@ -87,10 +87,10 @@ class RadioInput extends Component {
 					</RadioGroup>
 				</FormControl>
 				<div display='block'>
-					<IconButton arialabel='Next page' onClick={this.handleClick}>
+					<Button arialabel='Next page' onClick={this.handleClick}>
 						<Typography>Next Page</Typography>
 						<NavigateNextIcon />
-					</IconButton>
+					</Button>
 				</div>
 			</>
 		);
