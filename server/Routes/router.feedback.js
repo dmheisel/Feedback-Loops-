@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 //GET route
 router.get('/', (req, res) => {
 	let sqlText = `SElECT * FROM "feedback"
-    ORDER BY "id"`;
+    ORDER BY "date" ASC`;
 
 	pool
 		.query(sqlText)
@@ -47,35 +47,43 @@ router.post('/add', (req, res) => {
 }); //end POST route
 
 //PUT route
-router.put('/:id', (req, res) => {
-	let newFeedback = req.body;
+router.put('/flag/:id', (req, res) => {
 	let idToEdit = req.params.id;
 	let sqlText = `UPDATE "feedback"
       SET
-        "feeling" = $1,
-        "understanding" = $2,
-        "support" = $3,
-        "comments" = $4
-      WHERE "id" = $5;`;
+				"flagged" = NOT "flagged"
+      WHERE "id" = $1;`;
+	let values = [idToEdit]; // values for SQL input sanitization
 
-	let values = [
-		newFeedback.feeling,
-		newFeedback.understanding,
-		newFeedback.support,
-		newFeedback.comments,
-		idToEdit
-  ]; // values for SQL input sanitization
-
-  pool
-    .query(sqlText, values)
-    .then(result => {
-      console.log(`successful PUT route to database`)
-      res.sendStatus(201)
-    })
-    .catch(err => {
-      console.log(`error on PUT route to database: ${err}`)
-      res.sendStatus(500)
-    })
+	pool
+		.query(sqlText, values)
+		.then(result => {
+			console.log(`successful PUT route to database`);
+			res.sendStatus(201);
+		})
+		.catch(err => {
+			console.log(`error on PUT route to database: ${err}`);
+			res.sendStatus(500);
+		});
 });
+
+//DELETE route
+router.delete('/:id', (req, res) => {
+	let idToDelete = req.params.id;
+	let sqlText =
+		`DELETE FROM "feedback"
+			WHERE "id" = $1`
+
+	pool
+		.query(sqlText, [idToDelete])
+		.then(() => {
+			console.log(`successful DELETE from database`);
+			res.sendStatus(204)
+		})
+		.catch(err => {
+			console.log(`error on DELETE route from database: ${err}`)
+		})
+})
+
 
 module.exports = router;
