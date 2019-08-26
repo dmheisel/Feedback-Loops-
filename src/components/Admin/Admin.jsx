@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import AdminTableItem from './AdminTableItem';
 
 //material-ui imports
 import { withStyles } from '@material-ui/core/styles';
@@ -51,31 +52,33 @@ class Admin extends Component {
 				this.getFeedback();
 			})
 			.catch(err => console.log(`error on DELETE route from server: ${err}`));
-  };
+	};
 
-  editFeedback = (id, newFeedback) => {
-    axios
-      .put(`/feedback/${id}`, newFeedback)
-      .then(response => {
-        console.log(`successful PUT route from server: ${response.data}`)
-      })
-      .catch(err => console.log(`error on PUT route from server: ${err}`))
-  }
+	toggleFeedbackFlag = id => {
+		axios
+			.put(`/feedback/flag/${id}`)
+			.then(response => {
+				console.log(`successful PUT route from server: ${response.data}`);
+				this.getFeedback();
+			})
+			.catch(err => console.log(`error on PUT route from server: ${err}`));
+	};
 
 	componentDidMount = () => {
 		this.getFeedback();
 	};
+
 	render() {
 		const { classes } = this.props;
-
 		const tableHtml = this.state.feedbackList.map(feedback => (
-			<TableRow key={feedback.id}>
-				<TableCell>{feedback.feeling}</TableCell>
-				<TableCell>{feedback.understanding}</TableCell>
-				<TableCell>{feedback.support}</TableCell>
-				<TableCell align='right'>{feedback.comments}</TableCell>
-			</TableRow>
+			<AdminTableItem
+				key={feedback.id}
+				feedback={feedback}
+        toggleFeedbackFlag={this.toggleFeedbackFlag}
+        deleteFeedback={this.deleteFeedback}
+			/>
 		));
+
 		return (
 			<div className={classes.root}>
 				<Paper className={classes.paper}>
@@ -86,6 +89,8 @@ class Admin extends Component {
 								<TableCell>Understanding</TableCell>
 								<TableCell>Support</TableCell>
 								<TableCell align='right'>Comments</TableCell>
+								<TableCell align='right'>Flag</TableCell>
+								<TableCell align='right'>Delete</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>{tableHtml}</TableBody>
