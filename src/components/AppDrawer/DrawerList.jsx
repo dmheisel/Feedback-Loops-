@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 //material-ui imports
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';

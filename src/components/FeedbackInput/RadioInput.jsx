@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 //material-ui imports
 import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';

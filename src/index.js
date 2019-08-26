@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
-
 //redux imports
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import 'typeface-roboto';
 import logger from 'redux-logger';
-
+//material-ui imports
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import 'typeface-roboto';
 
 const theme = createMuiTheme({
 	palette: {
@@ -22,7 +20,6 @@ const theme = createMuiTheme({
 		}
 	}
 });
-
 //feedback reducer handles each element of feedback provided
 //adds it to an object with keys for each feedback
 const feedbackReducer = (

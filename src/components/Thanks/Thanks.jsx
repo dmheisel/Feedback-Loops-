@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 //material-ui imports
 import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';

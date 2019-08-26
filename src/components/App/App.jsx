@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-
 //Components for page
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';

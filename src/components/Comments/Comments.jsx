@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import FeedbackInput from '../FeedbackInput/FeedbackInput';
-
 //material-ui imports
 import Typography from '@material-ui/core/Typography';
 
