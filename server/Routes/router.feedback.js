@@ -82,6 +82,7 @@ router.delete('/:id', (req, res) => {
 		})
 		.catch(err => {
 			console.log(`error on DELETE route from database: ${err}`);
+			res.sendStatus(500)
 		});
 });
 
