@@ -15,6 +15,9 @@ const styles = theme => ({
     width: '80%',
     margin: 'auto'
 	},
+	textArea: {
+		margin: 'auto'
+	},
 	button: {
 		margin: theme.spacing(1)
 	},
@@ -44,18 +47,20 @@ class Review extends Component {
 				<Paper className={classes.root}>
 					<Typography variant='h4'>Review your feedback:</Typography>
 					<Divider className={classes.break} />
+					<div className={classes.textArea}>
 					<Typography variant='h6'>
 						Feeling: {this.props.feedback.feeling}
 					</Typography>
 					<Typography variant='h6'>
-						Understanding: {this.props.feedback.understanding}{' '}
+						Understanding: {this.props.feedback.understanding}
 					</Typography>
 					<Typography variant='h6'>
 						Support: {this.props.feedback.support}
 					</Typography>
 					<Typography variant='h6'>
 						Comments: {this.props.feedback.comments}
-					</Typography>
+						</Typography>
+						</div>
 					<Divider className={classes.break} />
 					<Button
 						variant='contained'
