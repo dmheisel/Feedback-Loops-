@@ -11,9 +11,15 @@ import FlagOutlined from '@material-ui/icons/FlagOutlined';
 import DeleteSweep from '@material-ui/icons/DeleteSweep';
 
 const styles = theme => ({
-	button: {
+	flagButton: {
 		margin: theme.spacing(1),
-		padding: theme.spacing(1)
+		padding: theme.spacing(1),
+		color: theme.palette.primary.main
+	},
+	deleteButton: {
+		margin: theme.spacing(1),
+		padding: theme.spacing(1),
+		color: theme.palette.secondary.dark
 	}
 });
 
@@ -29,14 +35,14 @@ class AdminTableItem extends Component {
 				<TableCell align='right'>{feedback.comments}</TableCell>
 				<TableCell align='right'>
 					<IconButton
-						className={classes.button}
+						className={classes.flagButton}
 						onClick={() => this.props.toggleFeedbackFlag(feedback.id)}>
 						{feedback.flagged ? <Flag /> : <FlagOutlined />}
 					</IconButton>
 				</TableCell>
 				<TableCell align='right'>
 					<IconButton
-						className={classes.button}
+						className={classes.deleteButton}
 						onClick={() => {
 							//sweet alert dialogue to confirm deletion
 							Swal.fire({

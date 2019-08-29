@@ -11,6 +11,8 @@ import AppDrawer from '../AppDrawer/AppDrawer';
 import Thanks from '../Thanks/Thanks';
 
 class App extends Component {
+
+
 	render() {
 		return (
 			<Router>
