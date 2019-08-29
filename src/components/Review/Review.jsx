@@ -26,6 +26,11 @@ const styles = theme => ({
 class Review extends Component {
 	handleSubmit = () => {
 		//feedback isn't sent to db until it's submitted from review page
+		if (this.props.feedback.feeling <= 2 || this.props.feedback.understanding <= 2 || this.props.feedback.support <= 2) {
+			this.props.feedback.flagged = true;
+		} else {
+			this.props.feedback.flagged = false;
+		}
 		axios
 			.post('/feedback/add', this.props.feedback)
 			.then(response => {
