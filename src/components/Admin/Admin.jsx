@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux'
 import AdminTableItem from './AdminTableItem';
 
 //material-ui imports
@@ -28,17 +29,16 @@ const styles = theme => ({
 });
 
 class Admin extends Component {
-	state = {
-		feedbackList: []
-	};
 
+	componentDidMount = () => {
+		this.getFeedback()
+	}
 	getFeedback = () => {
 		axios
 			.get('/feedback')
 			.then(response => {
 				console.log('successful GET route from server');
-				this.setState({ feedbackList: response.data });
-				//sets feedback to local state
+				this.props.dispatch({type: "SET_HISTORY", payload: response.data})
 			})
 			.catch(err => {
 				console.log(`error on GET route from server: ${err}`);
@@ -66,13 +66,9 @@ class Admin extends Component {
 			.catch(err => console.log(`error on PUT route from server: ${err}`));
 	};
 
-	componentDidMount = () => {
-		this.getFeedback();
-	};
-
 	render() {
 		const { classes } = this.props;
-		const tableHtml = this.state.feedbackList.map(feedback => (
+		const tableHtml = this.props.feedbackList.map(feedback => (
 			//passes each feedback object to AdminTableItem component
 			//gets from state -- runs getFeedback on mount and sets it to local state
 			<AdminTableItem
@@ -104,5 +100,8 @@ class Admin extends Component {
 		);
 	}
 }
+const mapStateToProps = reduxStore => ({
+	feedbackList: reduxStore.historyReducer
+})
 
-export default withStyles(styles)(Admin);
+export default withStyles(styles)(connect(mapStateToProps)(Admin));

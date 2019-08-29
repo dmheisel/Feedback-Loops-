@@ -24,14 +24,15 @@ router.post('/add', (req, res) => {
 	let feedback = req.body;
 	let sqlText = `INSERT
       						INTO "feedback"
-        						("feeling", "understanding", "support", "comments")
+        						("feeling", "understanding", "support", "comments", "flagged")
      						 	VALUES
-        						($1, $2, $3, $4);`;
+        						($1, $2, $3, $4, $5);`;
 	let values = [
 		feedback.feeling,
 		feedback.understanding,
 		feedback.support,
-		feedback.comments
+		feedback.comments,
+		feedback.flagged
 	]; // values for SQL input santization
 
 	pool

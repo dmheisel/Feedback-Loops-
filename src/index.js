@@ -20,17 +20,24 @@ const theme = createMuiTheme({
 		}
 	}
 });
+
+const historyReducer = (state = [], action) => {
+	switch (action.type) {
+		case 'SET_HISTORY':
+			return action.payload;
+		default:
+			return state;
+	}
+}
 //feedback reducer handles each element of feedback provided
 //adds it to an object with keys for each feedback
-const feedbackReducer = (
-	state = {
-		feeling: undefined,
-		understanding: undefined,
-		support: undefined,
-		comments: undefined
-	},
-	action
-) => {
+const initialFeedbackState = {
+	feeling: undefined,
+	understanding: undefined,
+	support: undefined,
+	comments: undefined
+};
+const feedbackReducer = (state = initialFeedbackState, action) => {
 	switch (action.type) {
 		case 'ADD_FEELING':
 			return { ...state, feeling: action.payload };
@@ -41,18 +48,13 @@ const feedbackReducer = (
 		case 'ADD_COMMENTS':
 			return { ...state, comments: action.payload };
 		case 'CLEAR_FEEDBACK':
-			return {
-				feeling: undefined,
-				understanding: undefined,
-				support: undefined,
-				comments: undefined
-			};
+			return initialFeedbackState;
 		default:
 			return state;
 	}
 };
 const store = createStore(
-	combineReducers({ feedbackReducer }),
+	combineReducers({ feedbackReducer, historyReducer }),
 	applyMiddleware(logger)
 );
 ReactDOM.render(
